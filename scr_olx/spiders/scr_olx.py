@@ -2,7 +2,7 @@ import scrapy
 
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.linkextractors import LinkExtractor
-from items.scr_olx import ScrOlxItem 
+from src_olx.items import ScrOlxItem 
 
 #from scrapy.loader.processor import TakeFirst
 #from scrapy.loader import XPathItemLoader
