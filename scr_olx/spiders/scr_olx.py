@@ -1,8 +1,25 @@
-import scrapy 
+import re
+import json
+from urlparse import urlparse
+import urllib
 
-from scrapy.spiders import CrawlSpider, Rule
-from scrapy.linkextractors import LinkExtractor
-from src_olx.items import ScrOlxItem 
+from scrapy.selector import Selector
+try:
+    from scrapy.spider import Spider
+except:
+    from scrapy.spider import BaseSpider as Spider
+from scrapy.utils.response import get_base_url
+from scrapy.contrib.spiders import CrawlSpider, Rule
+from scrapy.contrib.linkextractors.sgml import SgmlLinkExtractor as sle
+
+from scr_olx.items import *
+from misc.log import *
+from misc.spider import CommonSpider
+ 
+
+#from scrapy.spiders import CrawlSpider, Rule
+#from scrapy.linkextractors import LinkExtractor
+#from src_olx.items import ScrOlxItem 
 
 #from scrapy.loader.processor import TakeFirst
 #from scrapy.loader import XPathItemLoader
@@ -13,7 +30,6 @@ from src_olx.items import ScrOlxItem
 class OlxSpider(CrawlSpider):
     name = "scr_olx"
     allowed_domains = ['odessa.od.olx.ua']
-    #start_urls = ['http://odessa.od.olx.ua/nedvizhimost/arenda-domov/dolgosrochnaya-arenda-domov/']
     start_urls = ['http://odessa.od.olx.ua/nedvizhimost/arenda-domov/dolgosrochnaya-arenda-domov/']
 
     rules = [
