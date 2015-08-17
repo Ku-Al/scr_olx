@@ -6,6 +6,21 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 
+from scrapy import signals
+import json
+import codecs
+
+
 class ScrOlxPipeline(object):
+    def __init__(self):
+        self.file = open('ScrOlx.json', 'wb')
+
     def process_item(self, item, spider):
+#        line = json.dumps(dict(item), ensure_ascii=False) + "\n"
+        line = json.dumps(dict(item)) + "\n"
+        self.file.write(line)
         return item
+    
+    def spider_closed(self, spider):
+        self.file.close()
+

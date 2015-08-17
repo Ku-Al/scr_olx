@@ -66,6 +66,14 @@ NEWSPIDER_MODULE = 'scr_olx.spiders'
 #    'scr_olx.pipelines.SomePipeline': 300,
 #}
 
+
+# Pipeline class write in pipeline.py
+ITEM_PIPELINES = {
+    'scr_olx.pipelines.ScrOlxPipeline': 300,
+}
+
+
+
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # NOTE: AutoThrottle will honour the standard settings for concurrency and delay
