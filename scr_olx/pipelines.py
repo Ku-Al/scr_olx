@@ -16,8 +16,11 @@ class ScrOlxPipeline(object):
         self.file = open('ScrOlx.json', 'wb')
 
     def process_item(self, item, spider):
-#        line = json.dumps(dict(item), ensure_ascii=False) + "\n"
-        line = json.dumps(dict(item)) + "\n"
+        try:
+            line = json.dumps(dict(item), ensure_ascii=True, sort_keys=True, indent=4) + "\n"
+        except UnicodeEncodeError:
+            print dict(item) + " \n"
+
         self.file.write(line)
         return item
     
