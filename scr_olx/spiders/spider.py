@@ -52,5 +52,7 @@ class OlxSpider(CrawlSpider):
         item = ScrOlxItem()
         item['url'] = response.xpath('//h3[@class="x-large lheight20 margintop5"]/a/@href').extract()
         item['title'] = response.xpath('//h3[@class="x-large lheight20 margintop5"]/a/strong/text()').extract()
+        item['data'] = response.xpath('//p[@class="color-9 lheight16 marginbott5 x-normal"]/text()').extract()
+        item['cost'] = response.xpath('//p[@class="price"]/strong/text()').extract()
 
         return item
