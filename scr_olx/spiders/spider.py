@@ -36,7 +36,8 @@ class OlxSpider(CrawlSpider):
         # The first rule to follow a link from this page - follow=True
         #Rule(LinkExtractor(allow=('?page=', )), follow=True),
         # Second rule for the pages on which we extract information
-        Rule(LinkExtractor(allow=['\d+', ]), callback='parse_item')
+#        Rule(LinkExtractor(allow='[0-5]',), callback='parse_item')
+        Rule(LinkExtractor(allow='\?page=[1-5]',), callback='parse_item')
     ]
 
     def parse_item(self, response):
