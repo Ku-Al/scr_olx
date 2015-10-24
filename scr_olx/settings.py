@@ -7,7 +7,6 @@ import os
 from os.path import dirname
 path = dirname(dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.append(path)
-#from misc.log import *
 
 
 BOT_NAME = 'scr_olx'
